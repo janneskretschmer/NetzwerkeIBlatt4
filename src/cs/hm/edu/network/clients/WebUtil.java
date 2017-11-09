@@ -3,10 +3,13 @@ package cs.hm.edu.network.clients;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+
+import com.google.gson.Gson;
 
 /**
  * @author Jannes Kretschmer
@@ -18,7 +21,21 @@ public class WebUtil {
 		return new WebUtil().new UrlBuilder(url);
 	}
 
-	private static String doRequest(URL url) throws IOException {
+	public static void doPutRequest(URL url, Object data) throws IOException {
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("PUT");
+		connection.setDoOutput(true);
+		connection.setRequestProperty("Content-Type", "application/json");
+		connection.setRequestProperty("Accept", "application/json");
+		OutputStreamWriter osw = new OutputStreamWriter(connection.getOutputStream());
+		osw.write(new Gson().toJson(data));
+		osw.flush();
+		osw.close();
+		if (connection.getResponseCode() != 200)
+			throw new IOException("not successfull");
+	}
+
+	private static String doGetRequest(URL url) throws IOException {
 		final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("GET");
 
@@ -63,7 +80,7 @@ public class WebUtil {
 		}
 
 		public String request() throws IOException {
-			return doRequest(build());
+			return doGetRequest(build());
 		}
 	}
 }
