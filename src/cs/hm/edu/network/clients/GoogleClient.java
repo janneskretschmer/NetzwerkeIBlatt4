@@ -1,7 +1,6 @@
-package cs.hm.edu.network.clients.google;
+package cs.hm.edu.network.clients;
 
 import cs.hm.edu.network.IConstants;
-import cs.hm.edu.network.clients.WebUtil;
 
 /**
  * @author Jannes Kretschmer
