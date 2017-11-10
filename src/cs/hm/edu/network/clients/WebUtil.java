@@ -62,7 +62,7 @@ public class WebUtil {
 
 		public UrlBuilder appendEscaped(String parameter, String value) {
 			try {
-				return append(URLEncoder.encode(parameter, "UTF-8"), URLEncoder.encode(parameter, "UTF-8"));
+				return append(URLEncoder.encode(parameter, "UTF-8"), URLEncoder.encode(value, "UTF-8"));
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
@@ -76,6 +76,7 @@ public class WebUtil {
 		}
 
 		public URL build() throws IOException {
+			System.out.println(sb);
 			return new URL(sb.toString());
 		}
 
