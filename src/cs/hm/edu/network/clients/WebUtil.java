@@ -76,7 +76,7 @@ public class WebUtil {
 		}
 
 		public URL build() throws IOException {
-			System.out.println(sb);
+//			System.out.println(sb);
 			return new URL(sb.toString());
 		}
 
