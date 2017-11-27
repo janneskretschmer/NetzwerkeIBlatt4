@@ -28,7 +28,7 @@ public class User {
 //	}
 	
 	public void nextDay() {
-		time.add(Calendar.DAY_OF_YEAR, 1);
+		addDay(time);
 	}
 	
 	public User(String address, String time, String mode) {		
@@ -63,7 +63,7 @@ public class User {
 //		System.out.println(new SimpleDateFormat("d-MM-yyyy HH:mm:ss").format(c.getTime()));
 		
 		if(c.before(Calendar.getInstance())) {
-			c.add(Calendar.DAY_OF_YEAR, 1);
+			addDay(c);
 		}
 		
 		System.out.println(new SimpleDateFormat("d-MM-yyyy HH:mm:ss").format(c.getTime()));
@@ -89,6 +89,22 @@ public class User {
 		}
 		else {
 			this.mode = "Failed";
+		}
+	}
+	
+	private final void addDay(Calendar c) {
+		
+		switch(c.get(Calendar.DAY_OF_WEEK)) {
+			case Calendar.FRIDAY: {
+				c.add(Calendar.DAY_OF_YEAR, 3);
+			}
+			case Calendar.SATURDAY: {
+				c.add(Calendar.DAY_OF_YEAR, 2);
+				break;
+			}
+			default: {
+				c.add(Calendar.DAY_OF_YEAR, 1);
+			}	
 		}
 	}
 	
