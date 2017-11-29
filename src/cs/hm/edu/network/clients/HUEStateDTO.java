@@ -9,20 +9,26 @@ public class HUEStateDTO {
 	private int sat;
 	private int bri;
 	private int hue;
+	private int trans;
 	
 	//if on is set to false some errors occur, so it is set to black instead
-	public static final HUEStateDTO STATE_OFF = new HUEStateDTO(true, 0, 0, 0);
-	public static final HUEStateDTO STATE_WHITE = new HUEStateDTO(true, 0, 254, 0);
-	public static final HUEStateDTO STATE_ORANGE = new HUEStateDTO(true, 254, 254, 5461);
-	public static final HUEStateDTO STATE_RED = new HUEStateDTO(true, 254, 254, 0);
+	public static final HUEStateDTO STATE_OFF = new HUEStateDTO(false, 254, 254, 0, 0);
+	public static final HUEStateDTO STATE_WHITE = new HUEStateDTO(true, 0, 254, 0, 0);
+	public static final HUEStateDTO STATE_ORANGE = new HUEStateDTO(true, 254, 254, 5461, 0);
+	public static final HUEStateDTO STATE_RED = new HUEStateDTO(true, 254, 254, 0, 0);
 
-	public HUEStateDTO(boolean on, int sat, int bri, int hue) {
+	public HUEStateDTO(boolean on, int sat, int bri, int hue, int transitiontime) {
 		setOn(on);
 		setSat(sat);
-		setBri(bri);
+		setBri(bri / 2);
 		setHue(hue);
+		setTrans(transitiontime);
 	}
 
+	public void setTrans(int trans) {
+		this.trans = trans;
+	}
+	
 	public boolean isOn() {
 		return on;
 	}
