@@ -14,18 +14,19 @@ public class WorkerController {
 	
 	public void run() { // KEIN eigener Thread - standardthread (btw)
 		
+		
 		for(Worker w : worker) {
 			new Thread(w).start(); // Thread von worker starten
 		}
 		
+		//erwarte Eingabe vom Nutzer...
 		try (Scanner scanner = new Scanner(System.in)) {
             while(true) {
             	String s = scanner.nextLine();
             	try {
             		int i = Integer.parseInt(s);
-            		if(i >= 0 && i < worker.size()) {
-            			System.out.println("Try to set " + i + " auf true");
-            			worker.get(i).setConfirmation(true);
+            		if(i >= 0 && i < worker.size()) { // Als Input wird die User (bzw. UserLampID) verwendet.
+            			worker.get(i).setConfirmation(true); // schicke Bestätigung an worker-Klasse
             		}
             	}
             	catch (NumberFormatException e) {
@@ -35,18 +36,4 @@ public class WorkerController {
 		}
 	}
 }
-	
-//	public void go() {
-//		
-//		threads.get(0).start();
-//            while((c = scanner.nextLine().charAt(0))!= 'q') {
-//                System.out.println(c);
-//            }
-//        }
-//		
-//		
-////		for(Thread t : threads) {
-////			t.start();
-////		}
-//	}
 

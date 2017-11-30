@@ -31,13 +31,7 @@ public class Main {
 			param += s + " ";
 		}
 		
-//		System.out.println(param.substring(0, param.length() - 1));
-		
 		String[] s = param.substring(0, param.length() - 1).split("\\|");
-		
-//		for(String a : s) {
-//			System.out.println(a);
-//		}
 		
 		if(s.length != (NUMBER_OF_PARAMETERS * NUMBER_OF_USERS)) { // 7 arguments needed: COlour, address (4x), work begin, transport
 			System.out.println("Wrong configuration");
@@ -46,36 +40,9 @@ public class Main {
 		
 		WorkerController wc = new WorkerController();
 		
-		for(int i = 0; i < NUMBER_OF_USERS * 3; i += 3) {
-//			list.add(new User(String.format("%s %s, %s %s", args[i + 0], args[i + 1], args[i + 2], args[i + 3]), args[i + 4], args[i + 5]));
-			wc.add(new User(s[i + 0], s[i + 1], s[i + 2]));
-//			System.out.println(s[i + 0] +  s[i + 1] +  s[i + 2]);
-		}
-		
-		wc.run();
-//		
-//		
-//		
-//		
-//		
-//		try {
-//			HUEClient.setOrange(1);
-//			HUEClient.turnOff(1);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		try {
-//			// Example:
-//			System.out.println(
-//					GoogleClient.getDuration("Weidenstraße 2, 85368 Moosburg", IConstants.GOOGLE_TRAVEL_MODE_DRIVING));
-//			HUEClient.setOrange(1);
-//			HUEClient.setWhite(2);
-//			HUEClient.setRed(3);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		for(int i = 0; i < NUMBER_OF_USERS * 3; i += 3) { 
+			wc.add(new User(s[i + 0], s[i + 1], s[i + 2])); // Füge einen neuen User hinzu
+		}		
+		wc.run(); // Kein Thread-Aufruf!
 	}
 }

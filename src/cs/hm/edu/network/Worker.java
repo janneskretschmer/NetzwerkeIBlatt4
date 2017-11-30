@@ -9,7 +9,6 @@ public class Worker extends Thread {
 	
 	private static int red = -1;
 	
-	private int status = 0;	
 	private boolean confirmation = false;
 	private final User user;
 	
@@ -36,10 +35,6 @@ public class Worker extends Thread {
 	public static final int RED = 2; // 1min vor Abfahrtszeit
 	public static final int ALL_RED = 3; // Höchste Eisenbahn! Die Mitbewohner müssen den Penner wecken!
 	
-	public int getStatus() {
-		return status;
-	}
-	
 	private int status() {
 		
 		try {
@@ -56,17 +51,13 @@ public class Worker extends Thread {
 			if(diff <= 120) { // Lampe darf nicht weiß sein!
 				if(diff <= 60) { // Lampe darf nicht weiß und nicht orange sein
 					if(diff <= 0) { // Warnung: Mitbewohner muss schon längst gegangen sein!
-						status = ALL_RED;
-						return status;
+						return ALL_RED;
 					}
-					status = RED;
-					return status;
+					return RED;
 				}
-				status = ORANGE;
-				return status;
+				return ORANGE;
 			}
-			status = WHITE;
-			return status;
+			return WHITE;
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -126,13 +117,13 @@ public class Worker extends Thread {
 				if(isOn) {
 					turnOff(); // Ausschalten
 					isOn = false;
-					sleep(1000);
+					sleep(IConstants.BLINK_TIMEOUT);
 					continue; // Nächster Schleifendurchgang...
 				}
 				else {
 					setRed(); // einschalten
 					isOn = true;
-					sleep(1000);
+					sleep(IConstants.BLINK_TIMEOUT);
 					continue; // Nächster Schleifendurchgang...
 				}
 			}
