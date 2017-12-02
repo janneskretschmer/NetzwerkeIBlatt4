@@ -60,7 +60,8 @@ public class Worker extends Thread {
 			return WHITE;
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(Main.CONNECTION_PROBLEM);
+			System.exit(0);
 		}
 		return 0;
 	}
