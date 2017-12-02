@@ -5,6 +5,10 @@ import java.io.IOException;
 import cs.hm.edu.network.clients.GoogleClient;
 import cs.hm.edu.network.clients.HUEClient;
 
+/**
+ * @author Niko Paripovic
+ *
+ */
 public class Worker extends Thread {
 	
 	private static int red = -1;

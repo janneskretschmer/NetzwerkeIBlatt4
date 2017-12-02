@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * @author Niko Paripovic
+ *
+ */
 public class WorkerController {
 	List<Worker> worker = new ArrayList<>();
 	

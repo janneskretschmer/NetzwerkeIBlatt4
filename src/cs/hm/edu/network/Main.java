@@ -6,6 +6,10 @@ import java.util.List;
 
 import cs.hm.edu.network.clients.GoogleClient;
 
+/**
+ * @author Niko Paripovic + Jannes Kretschmer
+ *
+ */
 public class Main {
 	public static final String USAGE = "<Nutzer1_Zieladresse>|<Nutzer1_Arbeitsbeginn>|<Nutzer1_Verkehrsmittel>|"
 			+ "<Nutzer2_Zieladresse>|<Nutzer2_Arbeitsbeginn>|<Nutzer2_Verkehrsmittel>|" + "...|"
