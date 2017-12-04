@@ -30,7 +30,8 @@ public class Worker extends Thread {
 		try {
 			Thread.sleep(ms);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			System.out.println("Kann garnicht auftreten.. Bitte kontaktiere den Entwickler!");
+			System.exit(0);
 		}
 	}
 	
@@ -75,7 +76,8 @@ public class Worker extends Thread {
 			HUEClient.turnOff(user.getLampID());
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(Main.CONNECTION_PROBLEM);
+			System.exit(0);
 		}
 	}
 	
@@ -83,7 +85,8 @@ public class Worker extends Thread {
 		try {
 			HUEClient.setRed(user.getLampID());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(Main.CONNECTION_PROBLEM);
+			System.exit(0);
 		}
 	}
 	
@@ -91,7 +94,8 @@ public class Worker extends Thread {
 		try {
 			HUEClient.setWhite(user.getLampID());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(Main.CONNECTION_PROBLEM);
+			System.exit(0);
 		}
 	}
 	
@@ -99,7 +103,8 @@ public class Worker extends Thread {
 		try {
 			HUEClient.setOrange(user.getLampID());
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(Main.CONNECTION_PROBLEM);
+			System.exit(0);
 		}
 	}
 
