@@ -16,9 +16,9 @@ public class GoogleClient {
 		return new JsonParser()
 				.parse(WebUtil.getUrlBuilder(IConstants.GOOGLE_API_URL).append("key", IConstants.GOOGLE_API_KEY)
 						.appendEscaped("mode", mode).appendEscaped("destinations", destination)
-						.appendEscaped("origins", IConstants.START_ADRESS).request())
+						.appendEscaped("origins", IConstants.START_ADRESS).appendEscaped("departure_time", "" + (System.currentTimeMillis() / 1000)).request())
 				.getAsJsonObject().get("rows").getAsJsonArray().get(0).getAsJsonObject().get("elements")
-				.getAsJsonArray().get(0).getAsJsonObject().get("duration").getAsJsonObject().get("value").getAsInt();
+				.getAsJsonArray().get(0).getAsJsonObject().get(IConstants.GOOGLE_TRAVEL_MODE_DRIVING.equals(mode)?"duration_in_traffic":"duration").getAsJsonObject().get("value").getAsInt();
 	}
 
 	public static boolean checkAdress(String destination) throws IOException {
